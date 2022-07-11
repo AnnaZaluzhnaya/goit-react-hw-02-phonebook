@@ -1,7 +1,7 @@
-import { nanoid } from 'nanoid';
-import React from 'react';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { nanoid } from 'nanoid';
+import style from './ContactForm.module.css';
 
 class ContactForm extends Component {
   state = {
@@ -35,6 +35,7 @@ class ContactForm extends Component {
         <label htmlFor={this.nameId}>
           <p>Name</p>
           <input
+            className={style.input}
             type="text"
             name="name"
             value={name}
@@ -48,6 +49,7 @@ class ContactForm extends Component {
         <label htmlFor={this.numberId}>
           <p>Number</p>
           <input
+            className={style.input}
             type="tel"
             name="number"
             value={number}
@@ -59,7 +61,9 @@ class ContactForm extends Component {
           />
         </label>
         <br />
-        <button type="submit">Add contact</button>
+        <button type="submit" className={style.addBtn}>
+          Add contact
+        </button>
       </form>
     );
   }
