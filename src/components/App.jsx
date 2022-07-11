@@ -17,8 +17,14 @@ export class App extends Component {
   };
 
   formSubmitHandler = (name, number) => {
-    if (this.state.contacts.find(contact => contact.name === name)) {
-      alert(`${name} is already in contacts`);
+    const normalizedName = name.toLowerCase();
+
+    const addedName = this.state.contacts.find(contact =>
+      contact.name.toLowerCase().includes(normalizedName)
+    );
+
+    if (addedName) {
+      alert(`${normalizedName} is already in contacts`);
       return;
     }
 
@@ -39,7 +45,7 @@ export class App extends Component {
     }));
   };
 
-  getFilterName = () => {
+  getFilteredNames = () => {
     const normalizedFilter = this.state.filter.toLowerCase();
     return this.state.contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
@@ -52,7 +58,7 @@ export class App extends Component {
 
   render() {
     const { filter } = this.state;
-    const contactNames = this.getFilterName();
+    const contactNames = this.getFilteredNames();
 
     return (
       <div>
