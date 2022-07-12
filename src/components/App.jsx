@@ -17,14 +17,12 @@ export class App extends Component {
   };
 
   formSubmitHandler = (name, number) => {
-    const normalizedName = name.toLowerCase();
-
-    const addedName = this.state.contacts.find(contact =>
-      contact.name.toLowerCase().includes(normalizedName)
+    const addedName = this.state.contacts.find(
+      contact => contact.name.toLocaleLowerCase() === name.toLocaleLowerCase()
     );
 
     if (addedName) {
-      alert(`${normalizedName} is already in contacts`);
+      alert(`${name.toLowerCase()} is already in contacts`);
       return;
     }
 
